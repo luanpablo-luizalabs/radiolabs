@@ -13,7 +13,7 @@ logger = logging.getLogger('django')
 
 class Video(models.Model):
     url = models.URLField(null=True)
-    video_id = models.CharField(max_length=50, blank=True)
+    video_id = models.CharField(max_length=50, blank=True, unique=True)
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=512, null=True, blank=True)
