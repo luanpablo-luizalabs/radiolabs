@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
+<iframe id="playing" src="{% url "videos:playing" %}"></iframe>
+<iframe id="next-vote" src="{% url "votes:next-vote" %}"></iframe>
+{% endblock %}

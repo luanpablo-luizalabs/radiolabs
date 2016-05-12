@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+  <script>
+    {% if video %}
+      var VIDEO_ID = "{{ video.video_id }}";
+      var DELETE_VIDEO_URL = "{% url "videos:delete" video.video_id %}";
+    {% else %}
+      var VIDEO_ID = "";
+      var DELETE_VIDEO_URL = "";
+    {% endif %}
+
+    var PLAYER_WIDTH = 300;
+    var PLAYER_HEIGHT = 200;
+  </script>
+  <script src="{% static "js/base.js" %}"></script>
+
+  {% csrf_token %}
+
+  <div id="video-placeholder"></div>
+{% endblock %}

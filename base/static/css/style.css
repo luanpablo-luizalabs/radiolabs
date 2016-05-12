@@ -1,0 +1,23 @@
+body, iframe {
+    border: 0;
+    margin: 0;
+    height: 100%;
+    
+}
+
+iframe {
+    padding: 10px;
+    float: left;
+}
+
+iframe#playing {
+    width: calc(30% - 20px);
+    min-width: 320px;
+    min-height: 220px;
+}
+
+iframe#next-vote {
+    width: calc(70% - 20px);
+    min-width: 620px;
+    min-height: 420px;
+}
