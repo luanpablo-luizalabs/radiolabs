@@ -23,7 +23,7 @@ class Video(models.Model):
         verbose_name_plural = u'Vídeos'
 
     def __unicode__(self):
-        return self.title
+        return self.title or u''
 
     def save(self, **kwargs):
         if not self.video_id and self.url:
