@@ -36,6 +36,7 @@ handlers:
 
 env_variables:
   SETTINGS_MODE: 'prod'
+
 # Only pure Python libraries can be vendored
 # Python libraries that use C extensions can
 # only be included if they are part of the App Engine SDK 
