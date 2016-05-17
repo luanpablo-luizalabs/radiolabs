@@ -1,27 +1,24 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block navbar %}{% endblock %}
+
+{% block content-class %}playlist-content{% endblock %}
+
 {% block content %}
-  {% if video %}
-    <script>
-      var VIDEO_ID = "{{ video.video_id }}";
-      var DELETE_VIDEO_URL = "{% url "videos:delete" video.video_id %}";
-      var PLAYER_WIDTH = 600;
-      var PLAYER_HEIGHT = 400;
-    </script>
-    <script src="{% static "js/base.js" %}"></script>
-
-    <div id="video-placeholder"></div>
-    upvote | downvote
-  {% else %}
-    Não há vídeos para votar :(
-
-    Que tal enviar um?
-  {% endif %}
-
-  <form method="POST" action="{% url "videos:add" %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enviar</button>
-  </form>
+  {% for video in videos %}
+    <div class="card">
+      <img class="cover" src="{{ video.cover_url }}">
+      <div class="video-title">{{ video.title }}</div>
+      <div class="box-votes">
+        <div class="likes">
+          {{ video.count_like }} like 2
+        </div>
+        <span class="vertical-line"></span>
+        <div class="dislikes">
+          {{ video.count_dislike }} dislike 3
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 {% endblock %}

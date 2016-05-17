@@ -17,7 +17,24 @@
   </head>
   <body>
     {% block body %}
-      {% block content %}{% endblock %}
+      {% block navbar %}
+        <div id="navbar">
+          <div id="navbar-content">
+            <img class="brand" src="{% static "img/logo.png" %}">
+            <span class="navbar-brand-text">RADIO<strong>LABS</strong></span>
+            <span class="pull-right box-inline"><span class="text-small">Insira a url do youtube aqui</span>
+              <form method="POST" action="{% url "videos:add" %}">
+                {% csrf_token %}
+                {{ form_video.url }}
+                <button type="submit" class="btn-lg btn-add"><strong>+</strong></button>
+              </form>
+            </span>
+          </div>
+        </div>
+      {% endblock %}
+      <div class="{% block content-class %}content{% endblock %}">
+        {% block content %}{% endblock %}
+      </div>
     {% endblock %}
   </body>
 </html>

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block navbar %}{% endblock %}
+
 {% block content %}
   <script>
     {% if video %}
@@ -11,8 +13,8 @@
       var DELETE_VIDEO_URL = "";
     {% endif %}
 
-    var PLAYER_WIDTH = 300;
-    var PLAYER_HEIGHT = 200;
+    var PLAYER_WIDTH = 480;
+    var PLAYER_HEIGHT = 360;
   </script>
   <script src="{% static "js/base.js" %}"></script>
 

@@ -1,23 +1,160 @@
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v6/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+body {
+    background-color: #383838;
+    margin-top: 50px;
+    color: #fff;
+    border: 0;
+    margin: 0;
+    font-family: Montserrat;
+}
+
 body, iframe {
     border: 0;
     margin: 0;
     height: 100%;
-    
-}
-
-iframe {
-    padding: 10px;
-    float: left;
+    width: 100%;
 }
 
 iframe#playing {
-    width: calc(30% - 20px);
-    min-width: 320px;
-    min-height: 220px;
+    padding: 10px;
+    float: left;
+    width: 515px;
+    min-height: 380px;
 }
 
 iframe#next-vote {
-    width: calc(70% - 20px);
-    min-width: 620px;
-    min-height: 420px;
+    height: 340px;
+}
+
+#video-placeholder {
+    float: left;
+    min-height: 360px;
+}
+
+#navbar {
+    background-color: #1e1f23;
+    height: 50px;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+#navbar-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 50px;
+}
+
+#navbar .brand {
+    max-width: 30px;
+}
+
+#navbar .text-small {
+    font-size: 12px;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+#navbar .btn-add {
+    background-color: #cc2127;
+    height: 32px;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+#navbar .navbar-brand-text,
+#navbar .brand {
+    vertical-align: middle;
+}
+
+.box-inline {
+    display: inline-flex;
+}
+
+.pull-right {
+    float: right;
+}
+
+button, input {
+    border: 0;
+}
+
+input {
+    height: 22px;
+    padding: 5px;
+    min-width: 300px;
+    font-size: 12px;
+}
+
+button {
+    width: 30px;
+    color: #fff;
+    font-size: 24px;
+}
+
+/* body */
+.current-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.playlist-content {
+    background-color: #1e1f23;
+    height: 300px;
+    width: calc(100% - 40px);
+    padding: 20px 20px 0 20px;
+    display: inline-flex;
+}
+
+.playlist-content .card {
+    height: 280px;
+    width: 280px;
+    border: 0;
+    background-color: #383838;
+    margin: 0 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+}
+
+.playlist-content .card .cover {
+    width: 100%;
+}
+
+.playlist-content .card .video-title {
+    padding: 15px 10px 0 10px;
+    word-wrap: break-word;
+    white-space: pre-line;
+    height: 58px;
+}
+
+.playlist-content .card .box-votes {
+    background-color: #2d2d2f !important;
+    line-height: 45px;
+    display: inline-flex;
+}
+
+.playlist-content .card .box-votes .vertical-line {
+    height: 33px;
+    margin-top: 6px;
+    width: 2px;
+    background-color: #4A4A4A;
+}
+
+.playlist-content .card .box-votes .likes,
+.playlist-content .card .box-votes .dislikes {
+    width: 139px;
+}
+
+.clearfix {
+    clear: both;
 }

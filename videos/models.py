@@ -17,6 +17,7 @@ class Video(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=512, null=True, blank=True)
+    cover_url = models.URLField(null=True, blank=True)
 
     class Meta:
         verbose_name = u'Vídeo'
@@ -29,12 +30,15 @@ class Video(models.Model):
         if not self.video_id and self.url:
             self.video_id = self.url.split('=')[1]
 
-        if not self.title:
+        if not self.title or not self.cover_url:
             try:
-                self.title = requests.get(
+                resp_json = requests.get(
                     settings.TITLE_URL.format(video_id=self.video_id),
                     timeout=2,
-                ).json()['items'][0]['snippet']['title']
+                ).json()
+                snippet = resp_json['items'][0]['snippet']
+                self.title = snippet['title']
+                self.cover_url = snippet['thumbnails']['medium']['url']
             except Exception as e:
                 logger.exception(e)
                 pass

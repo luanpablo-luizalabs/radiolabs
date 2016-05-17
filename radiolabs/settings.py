@@ -128,7 +128,8 @@ STATIC_URL = '/static/'
 # YouTube settings
 YT_KEY = os.environ.get('YT_KEY', '')
 TITLE_URL = ('https://www.googleapis.com/youtube/v3/videos?part=snippet&'
-             'id={video_id}&fields=items%2Fsnippet%2Ftitle&key=' + YT_KEY)
+             'id={video_id}&fields=items(contentDetails%2Csnippet)&'
+             'key=' + YT_KEY)
 
 try:
     from .local_settings import *
