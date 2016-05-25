@@ -105,6 +105,7 @@ iframe#next-vote {
     max-width: 1000px;
     margin: 0 auto;
     line-height: 50px;
+    white-space: normal;
 }
 
 #navbar .brand {
