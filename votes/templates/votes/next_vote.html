@@ -5,9 +5,15 @@
 
 {% block content-class %}playlist-content{% endblock %}
 
+{% block head %}
+  {{ block.super }}
+  <script>var VIDEO_LIST_URL = "{% url "videos:list" %}";</script>
+  <script src="{% static "js/check.js" %}"></script>
+{% endblock %}
+
 {% block content %}
   {% for video in videos %}
-    <div class="card">
+    <div class="card" rel="{{ video.id }}">
       <img class="cover" src="{{ video.cover_url }}">
       <div class="video-title">{{ video.title }}</div>
       <div class="box-votes">

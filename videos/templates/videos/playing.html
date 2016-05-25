@@ -3,11 +3,13 @@
 
 {% block navbar %}{% endblock %}
 
-{% block content %}
+{% block head %}
+  {{ block.super }}
   <script>
     {% if video %}
       var VIDEO_ID = "{{ video.video_id }}";
       var DELETE_VIDEO_URL = "{% url "videos:delete" video.video_id %}";
+      var AUTOSTART = "{{ request.GET.autostart }}";
     {% else %}
       var VIDEO_ID = "";
       var DELETE_VIDEO_URL = "";
@@ -16,9 +18,21 @@
     var PLAYER_WIDTH = 480;
     var PLAYER_HEIGHT = 360;
   </script>
-  <script src="{% static "js/base.js" %}"></script>
+  <script src="{% static "js/playing.js" %}"></script>
+{% endblock %}
 
+{% block content %}
   {% csrf_token %}
-
-  <div id="video-placeholder"></div>
+  <div id="now-playing">
+    <div id="current-bg-wrapper">
+      <img id="current-bg" src="{{ video.cover_url }}">
+    </div>
+    <div id="player">
+      <div id="player-wrapper">
+        <div id="video-placeholder"></div>
+      </div>
+    </div>
+    <span class="video-title">{{ video.title }}</span>
+    <span class="block">
+  </div>
 {% endblock %}

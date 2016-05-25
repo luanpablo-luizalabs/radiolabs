@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import logging
 import requests
+import urlparse
 
 from django.conf import settings
 from django.db import models
@@ -28,7 +29,9 @@ class Video(models.Model):
 
     def save(self, **kwargs):
         if not self.video_id and self.url:
-            self.video_id = self.url.split('=')[1]
+            parsed_url = urlparse.urlsplit(self.url)
+            query_str = urlparse.parse_qs(parsed_url.query)
+            self.video_id = query_str.get('v', '')[0]
 
         if not self.title or not self.cover_url:
             try:
