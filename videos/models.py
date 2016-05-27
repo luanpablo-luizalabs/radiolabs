@@ -47,3 +47,11 @@ class Video(models.Model):
                 pass
 
         super(Video, self).save(**kwargs)
+
+    @property
+    def count_like(self):
+        return self.vote_set.filter(vote=1).count()
+
+    @property
+    def count_dislike(self):
+        return self.vote_set.filter(vote=-1).count()

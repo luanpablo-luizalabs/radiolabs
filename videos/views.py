@@ -7,6 +7,7 @@ from django.views.generic import View, TemplateView, CreateView, DeleteView
 
 from .forms import VideoForm
 from .models import Video
+from .utils import get_current
 
 
 class PlayingView(TemplateView):
@@ -14,7 +15,7 @@ class PlayingView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PlayingView, self).get_context_data(**kwargs)
-        context['video'] = Video.objects.order_by('created').first()
+        context['video'] = get_current()
         return context
 
 
@@ -69,6 +70,8 @@ class VideoListView(View):
     def get(self, request, *args, **kwargs):
         return HttpResponse(
             json.dumps(list(
-                self.model.objects.all().values_list('id', flat=True)[1:]
+                self.model.objects.exclude(pk=get_current().pk).values_list(
+                    'id', flat=True
+                )
             ))
         )

@@ -8,22 +8,26 @@
 {% block head %}
   {{ block.super }}
   <link rel="stylesheet" href="{% static "assets/font-awesome-4.6.3/css/font-awesome.min.css" %}">
-  <script>var VIDEO_LIST_URL = "{% url "videos:list" %}";</script>
+  <script>
+    var VIDEO_LIST_URL = "{% url "videos:list" %}";
+    var VOTE_ADD_URL = "{% url "votes:vote" %}";
+  </script>
   <script src="{% static "js/check.js" %}"></script>
 {% endblock %}
 
 {% block content %}
+  {% csrf_token %}
   {% for video in videos %}
     <div class="card" rel="{{ video.id }}">
       <img class="cover" src="{{ video.cover_url }}">
       <div class="video-title">{{ video.title }}</div>
       <div class="box-votes">
         <div class="likes">
-          {{ video.count_like }} <i class="fa fa-thumbs-o-up fa-lg"></i>
+          <span class="qt">{{ video.count_like }}</span> <i class="fa fa-thumbs-o-up fa-lg"></i>
         </div>
         <span class="vertical-line"></span>
         <div class="dislikes">
-          {{ video.count_dislike }} <i class="fa fa-thumbs-o-down fa-lg"></i>
+          <span class="qt">{{ video.count_dislike }}</span> <i class="fa fa-thumbs-o-down fa-lg"></i>
         </div>
       </div>
     </div>
