@@ -7,6 +7,7 @@
 
 {% block head %}
   {{ block.super }}
+  <link rel="stylesheet" href="{% static "assets/font-awesome-4.6.3/css/font-awesome.min.css" %}">
   <script>var VIDEO_LIST_URL = "{% url "videos:list" %}";</script>
   <script src="{% static "js/check.js" %}"></script>
 {% endblock %}
@@ -18,11 +19,11 @@
       <div class="video-title">{{ video.title }}</div>
       <div class="box-votes">
         <div class="likes">
-          {{ video.count_like }} like 2
+          {{ video.count_like }} <i class="fa fa-thumbs-o-up fa-lg"></i>
         </div>
         <span class="vertical-line"></span>
         <div class="dislikes">
-          {{ video.count_dislike }} dislike 3
+          {{ video.count_dislike }} <i class="fa fa-thumbs-o-down fa-lg"></i>
         </div>
       </div>
     </div>
