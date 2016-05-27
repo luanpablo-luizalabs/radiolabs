@@ -65,8 +65,9 @@ iframe#playing {
     width: 150px;
     height: 5px;
     background-color: #cc2127;
-    position: absolute;
-    margin: 245px 0 0 2px;
+    position: relative;
+    margin: 3px 0 0 2px;
+    float: left;
 }
 
 div#player {
