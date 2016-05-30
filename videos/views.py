@@ -15,7 +15,10 @@ class PlayingView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PlayingView, self).get_context_data(**kwargs)
-        context['video'] = get_current()
+        try:
+            context['video'] = get_current()
+        except AttributeError:
+            context['video'] = None
         return context
 
 
@@ -70,7 +73,7 @@ class VideoListView(View):
     def get(self, request, *args, **kwargs):
         return HttpResponse(
             json.dumps(list(
-                self.model.objects.exclude(pk=get_current().pk).values_list(
+                self.model.objects.exclude(pk=getattr(get_current(), 'pk', 0)).values_list(
                     'id', flat=True
                 )
             ))

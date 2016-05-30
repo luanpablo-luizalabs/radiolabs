@@ -12,7 +12,7 @@ class NextVoteView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(NextVoteView, self).get_context_data(**kwargs)
-        context['videos'] = Video.objects.exclude(pk=get_current().pk)
+        context['videos'] = Video.objects.exclude(pk=getattr(get_current(), 'pk', 0))
         return context
 
 
