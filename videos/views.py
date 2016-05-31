@@ -73,7 +73,7 @@ class VideoListView(View):
     def get(self, request, *args, **kwargs):
         return HttpResponse(
             json.dumps(list(
-                self.model.objects.exclude(pk=getattr(get_current(), 'pk', 0)).values_list(
+                self.model.objects.exclude(playing=True).values_list(
                     'id', flat=True
                 )
             ))

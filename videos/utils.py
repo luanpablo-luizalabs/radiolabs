@@ -17,4 +17,7 @@ def get_current():
             next_video = obj
         elif next_video.votes < obj.votes:
             next_video = obj
+    if not next_video.playing:
+        next_video.playing = True
+        next_video.save()
     return next_video

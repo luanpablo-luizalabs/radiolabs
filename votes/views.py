@@ -3,7 +3,6 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, View
 
 from videos.models import Video
-from videos.utils import get_current
 from .models import Vote
 
 
@@ -12,7 +11,7 @@ class NextVoteView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(NextVoteView, self).get_context_data(**kwargs)
-        context['videos'] = Video.objects.exclude(pk=getattr(get_current(), 'pk', 0))
+        context['videos'] = Video.objects.exclude(playing=True)
         return context
 
 

@@ -19,6 +19,7 @@ class Video(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=512, null=True, blank=True)
     cover_url = models.URLField(null=True, blank=True)
+    playing = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = u'Vídeo'
